@@ -1,4 +1,5 @@
 import 'package:insta_clone/models/gender.dart';
+import 'package:insta_clone/models/post.dart';
 
 enum SortType {
   name,
@@ -7,12 +8,14 @@ enum SortType {
   age
 }
 
+// TODO: update
 class User implements Comparable<User>{
   int id;
   String fullname;
   String _phone;
   String _email;
   Gender gender;
+  final List<Post> _posts = [];
   int _age;
 
   static int _userCount = 0;
@@ -95,5 +98,13 @@ class User implements Comparable<User>{
   @override
   String toString() {
     return "$fullname $email $gender $age $phone";
+  }
+
+  void writePost(Post post) {
+    _posts.add(post);
+  }
+
+  bool removePost(Post post) {
+    return _posts.remove(post);
   }
 }
