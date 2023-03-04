@@ -15,15 +15,16 @@ class User implements Comparable<User>{
   String _phone;
   String _email;
   Gender gender;
+  String password;
   final List<Post> _posts = [];
   int _age;
 
   static int _userCount = 0;
   static SortType sortType = SortType.name;
 
-  User._(this.id, this.fullname, this._phone, this._email, this.gender, this._age);
+  User._(this.id, this.fullname, this._phone, this._email, this.gender, this._age, this.password);
 
-  factory User(String fullname, String phone, String email, Gender gender, int age) {
+  factory User(String fullname, String phone, String email, Gender gender, int age, String password) {
     if(fullname.isEmpty) {
       throw Exception("Please fullname can't be empty!");
     }
@@ -40,7 +41,7 @@ class User implements Comparable<User>{
       throw Exception("Please enter valid age");
     }
 
-    return User._(++_userCount, fullname, phone, email, gender, age);
+    return User._(++_userCount, fullname, phone, email, gender, age, password);
   }
 
   String get phone => _phone;
